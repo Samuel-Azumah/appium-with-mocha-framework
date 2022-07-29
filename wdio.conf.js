@@ -64,10 +64,6 @@ exports.config = {
       'appium:newCommandTimeout': 240,
     },
   ],
-  // '/Users/Samuel Azumah/Documents/GitHub/appium-with-mocha-framework/sample.apk'
-  //join(process.cwd, ./)
-  //"/Users/Samuel Azumah/Documents/appiumTrial/sample.apk"
-  //C:
   //
   // ===================
   // Test Configurations

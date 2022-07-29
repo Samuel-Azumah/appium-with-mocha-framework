@@ -66,3 +66,15 @@ describe('002.1.login - Registration trial', () => {
     ).isDisplayed()
   })
 })
+
+//desired capability sample.
+//remote path : /wd/hub/
+//edit config: ANDROID_HOME && JAVA_HOME
+// {
+//   "platformName": "Android",
+//   "appium:platformVersion": "11.0",
+//   "appium:deviceName": "Pixel 2 XL API 30",
+//   "appium:app": "/Users/Samuel Azumah/Documents/GitHub/appium-with-mocha-framework/apks/login.apk",
+//   "appium:automationName": "UiAutomator2",
+//   "appium:newCommandTimeout": 250
+// }
