@@ -1,0 +1,68 @@
+const expect = require('chai').expect
+const registrationDataHandler = require('../../../data/shared/user-create-data')
+const xpathHandler = require('../../../support/xpath')
+const xpath = xpathHandler.getXpath
+
+const getUserDetails = ($el) => {
+  expect($el.length).to.be.greaterThan(5)
+}
+
+describe('002.1.login - Registration trial', () => {
+  const { email, name, password, passwordRepeat } =
+    registrationDataHandler.registrationData()
+
+  it("Should click on 'No account yet? Create one'", async () => {
+    await $(`${xpath('TextView', 'index="5"')}`)
+      .getText()
+      .then(($text) => {
+        expect($text.length).to.be.greaterThan(12)
+      })
+    await $(`${xpath('TextView', 'index="5"')}`).click()
+    await $(
+      `${xpath('TextView', 'elementId="00000000-0000-01ba-ffff-ffff00000026"')}`,
+    ).isDisplayed()
+  })
+
+  it('Should register as a customer', async () => {
+    await $(
+      `${xpath(
+        'EditText',
+        "resource-id='com.loginmodule.learning:id/textInputEditTextName'",
+      )}`,
+    ).addValue(name)
+    await $(
+      `${xpath(
+        'EditText',
+        "resource-id='com.loginmodule.learning:id/textInputEditTextName'",
+      )}`,
+    )
+      .getText()
+      .then((userName) => {
+        getUserDetails(userName)
+      })
+    await $$(`${xpath('EditText', "index='0'")}`)[1].addValue(email)
+    await $$(`${xpath('EditText', "index='0'")}`)[1]
+      .getText()
+      .then((userEmail) => {
+        getUserDetails(userEmail)
+      })
+    await $(
+      `${xpath(
+        'EditText',
+        "resource-id='com.loginmodule.learning:id/textInputEditTextPassword'",
+      )}`,
+    ).addValue(password)
+    await $(
+      `${xpath(
+        'EditText',
+        "resource-id='com.loginmodule.learning:id/textInputEditTextConfirmPassword'",
+      )}`,
+    ).addValue(passwordRepeat)
+    await $(
+      `${xpath(
+        'Button',
+        "resource-id='com.loginmodule.learning:id/appCompatButtonRegister'",
+      )}`,
+    ).isDisplayed()
+  })
+})

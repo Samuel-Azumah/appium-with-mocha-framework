@@ -57,7 +57,7 @@ exports.config = {
       'appium:platformVersion': '11.0',
       'appium:deviceName': 'Pixel 2 XL API 30',
       'appium:recreateChromeDriverSessions': true,
-      'appium:app': join(process.cwd(), './sample.apk'),
+      'appium:app': join(process.cwd(), './apks/login.apk'),
       maxInstances: 5,
 
       acceptInsecureCerts: true,

@@ -1,5 +1,5 @@
-const getXpath = (value) => {
-  const xpath = `//android.widget.TextView[@${value}]`
+const getXpath = (type, value) => {
+  const xpath = `//android.widget.${type}[@${value}]`
   return xpath
 }
 

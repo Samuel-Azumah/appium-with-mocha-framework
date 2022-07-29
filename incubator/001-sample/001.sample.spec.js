@@ -5,8 +5,8 @@ const xpath = xpathHandler.getXpath
 
 describe('001.Sample - For testing purposes', () => {
   it('Test one', async () => {
-    await $(`${xpath("text='AdMob Integration'")}`).isDisplayed()
-    await $(`${xpath("text='AdMob Integration'")}`)
+    await $(`${xpath('TextView', "text='AdMob Integration'")}`).isDisplayed()
+    await $(`${xpath('TextView', "text='AdMob Integration'")}`)
       .getText()
       .then(($text) => {
         expect($text).to.equal(sampleDataHandler.headerName)
@@ -15,14 +15,27 @@ describe('001.Sample - For testing purposes', () => {
 
   it('Step two', async () => {
     await $(
-      `${xpath('resource-id="com.sabithpkcmnr.admobintegration:id/textView"')}`,
+      `${xpath(
+        'TextView',
+        'resource-id="com.sabithpkcmnr.admobintegration:id/textView"',
+      )}`,
     ).isDisplayed()
-    await $(`${xpath('resource-id="com.sabithpkcmnr.admobintegration:id/textView"')}`)
+    await $(
+      `${xpath(
+        'TextView',
+        'resource-id="com.sabithpkcmnr.admobintegration:id/textView"',
+      )}`,
+    )
       .getAttribute('enabled')
       .then(($attributeValue) => {
         expect($attributeValue).to.equal('true')
       })
-    await $(`${xpath('resource-id="com.sabithpkcmnr.admobintegration:id/textView"')}`)
+    await $(
+      `${xpath(
+        'TextView',
+        'resource-id="com.sabithpkcmnr.admobintegration:id/textView"',
+      )}`,
+    )
       .getText()
       .then(($text) => {
         expect($text).to.includes('Sample')
