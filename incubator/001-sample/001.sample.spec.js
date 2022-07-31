@@ -8,9 +8,7 @@ describe('001.Sample - For testing purposes', () => {
     await $(`${xpath('TextView', "text='AdMob Integration'")}`).isDisplayed()
     await $(`${xpath('TextView', "text='AdMob Integration'")}`)
       .getText()
-      .then(($text) => {
-        expect($text).to.equal(sampleDataHandler.headerName)
-      })
+      .then(($text) => expect($text).to.equal(sampleDataHandler.headerName))
   })
 
   it('Step two', async () => {
@@ -27,9 +25,8 @@ describe('001.Sample - For testing purposes', () => {
       )}`,
     )
       .getAttribute('enabled')
-      .then(($attributeValue) => {
-        expect($attributeValue).to.equal('true')
-      })
+      .then(($attributeValue) => expect($attributeValue).to.equal('true'))
+
     await $(
       `${xpath(
         'TextView',
@@ -37,8 +34,6 @@ describe('001.Sample - For testing purposes', () => {
       )}`,
     )
       .getText()
-      .then(($text) => {
-        expect($text).to.includes('Sample')
-      })
+      .then(($text) => expect($text).to.includes('Sample'))
   })
 })

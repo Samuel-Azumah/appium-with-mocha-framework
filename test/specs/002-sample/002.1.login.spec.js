@@ -3,7 +3,7 @@ const registrationDataHandler = require('../../../data/shared/user-create-data')
 const xpathHandler = require('../../../support/xpath')
 const xpath = xpathHandler.getXpath
 
-const getUserDetails = ($el) => {
+const makeAssertion = ($el) => {
   expect($el.length).to.be.greaterThan(5)
 }
 
@@ -37,27 +37,27 @@ describe('002.1.login - Registration trial', () => {
       )}`,
     )
       .getText()
-      .then((userName) => {
-        getUserDetails(userName)
-      })
+      .then((userName) => makeAssertion(userName))
+
     await $$(`${xpath('EditText', "index='0'")}`)[1].addValue(email)
     await $$(`${xpath('EditText', "index='0'")}`)[1]
       .getText()
-      .then((userEmail) => {
-        getUserDetails(userEmail)
-      })
+      .then((userEmail) => makeAssertion(userEmail))
+
     await $(
       `${xpath(
         'EditText',
         "resource-id='com.loginmodule.learning:id/textInputEditTextPassword'",
       )}`,
     ).addValue(password)
+
     await $(
       `${xpath(
         'EditText',
         "resource-id='com.loginmodule.learning:id/textInputEditTextConfirmPassword'",
       )}`,
     ).addValue(passwordRepeat)
+
     await $(
       `${xpath(
         'Button',
