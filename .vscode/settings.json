@@ -1,0 +1,7 @@
+{
+    "prettier.endOfLine": "auto",
+    "prettier.singleQuote": true,
+    "prettier.requireConfig": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+}

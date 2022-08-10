@@ -1,4 +1,5 @@
 const { join } = require('path')
+require('geckodriver')
 
 exports.config = {
   //
@@ -27,7 +28,7 @@ exports.config = {
   //
   specs: ['./test/specs/**/*.js'],
   // Patterns to exclude.
-  exclude: ['./incubator/**/*.js'],
+  exclude: ['./test/specs/incubator/**/*.js'],
   //
   // ============
   // Capabilities
@@ -49,17 +50,15 @@ exports.config = {
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
-  //
+  // 'appium:automationName': 'UiAutomator2',
   capabilities: [
     {
       platformName: 'Android',
-      'appium:automationName': 'UiAutomator2',
       'appium:platformVersion': '11.0',
       'appium:deviceName': 'Pixel 2 XL API 30',
       'appium:recreateChromeDriverSessions': true,
-      'appium:app': join(process.cwd(), './apks/login.apk'),
+      'appium:app': join(process.cwd(), './apks/sample.apk'),
       maxInstances: 5,
-
       acceptInsecureCerts: true,
       'appium:newCommandTimeout': 240,
     },
@@ -112,8 +111,16 @@ exports.config = {
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
   services: ['geckodriver'],
-  beforeTest: [{ browserName: 'firefox' }],
 
+  // wdio.conf.js
+  before: () => {
+    require('./support/customCommands')
+    require('expect-webdriverio')
+    global.wdioExpect = global.expect
+    const chai = require('chai')
+    global.expect = chai.expect
+    global.should = chai.should()
+  },
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: https://webdriver.io/docs/frameworks
