@@ -13,7 +13,6 @@ const clickOnRegistrationButton = async () => {
     '[resource-id="com.royalapps.niyimakonjuola:id/btnLoginRegister"]',
   ).isDisplayed()
   await $('[resource-id="com.royalapps.niyimakonjuola:id/btnLoginRegister"]').click()
-  console.log('hey , I worked')
 }
 
 driver.addCommand('clickOnRegistrationButton', clickOnRegistrationButton)

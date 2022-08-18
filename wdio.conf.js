@@ -57,7 +57,7 @@ exports.config = {
       'appium:platformVersion': '11.0',
       'appium:deviceName': 'Pixel 2 XL API 30',
       'appium:recreateChromeDriverSessions': true,
-      'appium:app': join(process.cwd(), './apks/sample.apk'),
+      'appium:app': join(process.cwd(), './apks/exLibris.apk'),
       maxInstances: 5,
       acceptInsecureCerts: true,
       'appium:newCommandTimeout': 240,
@@ -115,11 +115,11 @@ exports.config = {
   // wdio.conf.js
   before: () => {
     require('./support/customCommands')
+    require('./support/login')
     require('expect-webdriverio')
     global.wdioExpect = global.expect
     const chai = require('chai')
     global.expect = chai.expect
-    global.should = chai.should()
   },
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber

@@ -18,7 +18,7 @@
     "wdio-geckodriver-service": "^3.0.2"
   },
   "scripts": {
-    "test": "wdio  wdio.conf.js --spec test/specs/003-sample/003.registration.spec.js"
+    "test": "wdio  wdio.conf.js --spec test/specs/005-sample/005.1.registeration.spec.js"
   },
   "author": "",
   "license": "ISC"
