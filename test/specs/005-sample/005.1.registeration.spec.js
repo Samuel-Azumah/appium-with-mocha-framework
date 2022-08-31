@@ -13,7 +13,7 @@ describe('005.1.resgistration - register as a user', () => {
     placeCode,
   } = registrationHandler.registerCustomerDetails()
 
-  it('Navigate to registration page', async () => {
+  it('Should navigate to registration page', async () => {
     await $(
       '//android.widget.Button[@resource-id="ch.appculture.exlibris.develop:id/idDrawerButtonProfile"]',
     ).click()
@@ -27,7 +27,7 @@ describe('005.1.resgistration - register as a user', () => {
     await $('//android.view.View[text="NEUES KONTO ERÖFFNEN"]').isDisplayed()
   })
 
-  it('Should fill in registration form', async () => {
+  it.skip('Should fill registration form and click on submit button', async () => {
     await $(
       '//android.widget.EditText[@resource-id="text-field_val-emailAddress"]',
     ).setValue(email)
